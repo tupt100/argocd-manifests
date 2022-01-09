@@ -10,10 +10,10 @@ spec:
     server: https://kubernetes.default.svc
     namespace: monitoring
   project: default
-source:
-  path: ./Applicationset/charts/core-apps/kube-ops-view
-  repoURL: https://github.com/tanmay-bhat/ArgoCD.git
-  targetRevision: HEAD
+  source:
+    path: ./Applicationset/charts/core-apps/kube-ops-view
+    repoURL: https://github.com/tanmay-bhat/ArgoCD.git
+    targetRevision: HEAD
   syncPolicy:
     automated:
       prune: true
