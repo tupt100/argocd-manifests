@@ -11,8 +11,9 @@ spec:
     namespace: monitoring
   project: default
   source:
-    repoURL: https://github.com/tanmay-bhat/ArgoCD/tree/main/Applicationset/charts/core-apps/kube-ops-view
+    repoURL: "https://github.com/tanmay-bhat/ArgoCD.git"
     targetRevision: 13.0.2
+    path: ./Applicationset/charts/core-apps/kube-ops-view
   syncPolicy:
     automated:
       prune: true
