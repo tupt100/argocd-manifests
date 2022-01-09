@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-ops-view
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  project: default
+  source:
+    repoURL: https://github.com/tanmay-bhat/ArgoCD/tree/main/Applicationset/charts/core-apps/kube-ops-view
+    targetRevision: 13.0.2
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true    
