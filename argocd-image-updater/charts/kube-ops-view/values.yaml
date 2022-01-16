@@ -1,5 +1,6 @@
 # Declare variables to be passed into your templates.
 replicaCount: 1
+pullsecret: registry-tanmaybhat
 image:
   repository: registry.digitalocean.com/tanmaybhat/kube-ops-view
   tag: latest
