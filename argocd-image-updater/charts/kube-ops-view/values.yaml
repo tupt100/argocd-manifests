@@ -1,8 +1,8 @@
 # Declare variables to be passed into your templates.
 replicaCount: 1
 image:
-  repository: hjacobs/kube-ops-view
-  tag: 20.4.0
+  repository: registry.digitalocean.com/tanmaybhat/kube-ops-view
+  tag: latest
   pullPolicy: IfNotPresent
 service:
   # annotations:
@@ -32,7 +32,7 @@ ingress:
   #       - kube-ops-view.local
 rbac:
   # If true, create & use RBAC resources
-  create: false
+  create: true
   # Ignored if rbac.create is true
   serviceAccountName: default
 
