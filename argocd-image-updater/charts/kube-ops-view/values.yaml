@@ -3,6 +3,7 @@ replicaCount: 1
 pullsecret: registry-tanmaybhat
 image:
   repository: registry.digitalocean.com/tanmaybhat/kube-ops-view
+  tag: latest
   pullPolicy: IfNotPresent
 service:
   # annotations:
