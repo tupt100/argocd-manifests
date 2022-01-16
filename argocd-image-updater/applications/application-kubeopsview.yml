@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1
+kind: Application
+metadata:
+  name: kube-ops-view
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: registry.digitalocean.com/tanmaybhat/kube-ops-view
+    argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/gitlab-secret
+    argocd-image-updater.argoproj.io/git-branch: main
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-ops-view
+  project: default
+  source:
+    path: ./argocd-image-updater/charts/kube-ops-view/
+    repoURL: https://gitlab.com/Tanmay-Bhat/argocd.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true      
+    
