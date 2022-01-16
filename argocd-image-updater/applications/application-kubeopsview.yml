@@ -1,7 +1,7 @@
-apiVersion: argoproj.io/v1beta1
+apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kube-ops-view
+  name: kube-ops-view-demo
   finalizers:
   - resources-finalizer.argocd.argoproj.io
   namespace: argocd
@@ -15,13 +15,16 @@ spec:
     namespace: kube-ops-view
   project: default
   source:
-    path: ./argocd-image-updater/charts/kube-ops-view/
-    repoURL: https://gitlab.com/Tanmay-Bhat/argocd.git
+    repoURL: 'https://gitlab.com/Tanmay-Bhat/argocd.git'
+    path: argocd-image-updater/charts/kube-ops-view
     targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml 
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
     - CreateNamespace=true      
-    
+ 
