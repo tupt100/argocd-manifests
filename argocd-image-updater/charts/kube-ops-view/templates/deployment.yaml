@@ -49,7 +49,7 @@ spec:
       - name: {{ .Values.pullsecret }}
       containers:
       - name: {{ .Chart.Name }}
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        image: "{{ .Values.image.repository }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         {{- if .Values.redis.enabled }}
         args:
