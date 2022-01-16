@@ -45,12 +45,12 @@ spec:
 {{ toYaml . | indent 8 }}
       {{- end }}
       serviceAccountName: {{ if .Values.rbac.create }}{{ template "kube-ops-view.fullname" . }}{{ else }}"{{ .Values.rbac.serviceAccountName }}"{{ end }}
+      imagePullSecrets:
+      - name: {{ .Values.pullsecret }}
       containers:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
-      imagePullSecrets:
-      - name: {{ .Values.pullsecret }}
         {{- if .Values.redis.enabled }}
         args:
         - --redis-url=redis://{{ .Release.Name }}-redis-master:{{ .Values.redis.master.port }}
