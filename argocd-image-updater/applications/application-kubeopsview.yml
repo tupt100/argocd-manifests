@@ -7,7 +7,7 @@ metadata:
   namespace: argocd
   annotations:
     argocd-image-updater.argoproj.io/image-list: registry.digitalocean.com/tanmaybhat/kube-ops-view
-    argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/gitlab-secret
+    argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/gitlab-token
     argocd-image-updater.argoproj.io/git-branch: main
 spec:
   destination:
