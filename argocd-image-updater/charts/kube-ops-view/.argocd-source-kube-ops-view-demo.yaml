@@ -1,8 +1,0 @@
-helm:
-  parameters:
-  - name: image.name
-    value: registry.digitalocean.com/tanmaybhat/kube-ops-view
-    forcestring: true
-  - name: image.tag
-    value: v1.2.4
-    forcestring: true
