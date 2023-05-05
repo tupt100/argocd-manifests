@@ -1,1 +1,22 @@
-
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-app33
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  project: default
+  source:
+    path: ./Applicationset/
+    repoURL: https://github.com/tupt100/argocd-manifests.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace: true
